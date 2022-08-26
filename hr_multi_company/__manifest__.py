@@ -28,7 +28,7 @@
     'author': 'Cybrosys Techno solutions,Open HRMS',
     'company': 'Cybrosys Techno Solutions',
     'website': "https://www.openhrms.com",
-    'depends': ['base', 'hr','hr_contract', 'hr_payroll_community', 'hr_expense', 'hr_attendance', 'hr_employee_transfer'],
+    'depends': ['base', 'hr','hr_contract', 'payroll', 'hr_expense', 'hr_attendance', 'hr_employee_transfer'],
     'data': [
         'views/hr_company_view.xml',
         'views/multi_company_view.xml',

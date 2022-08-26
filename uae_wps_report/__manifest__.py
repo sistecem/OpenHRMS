@@ -33,7 +33,7 @@
     'website': 'https://www.openhrms.com',
     'depends': [
         'hr',
-        'hr_payroll_community',
+        'payroll',
         'account',
         'hr_holidays',
     ],

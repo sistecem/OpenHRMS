@@ -12,7 +12,7 @@
                         class="oe_stat_button"
                         icon="fa-credit-card"
                         type="action"
-                        groups="hr_payroll_community.group_hr_payroll_community_user">
+                        groups="payroll.group_payroll_user">
                         <field name="payslip_count" widget="statinfo" string="Payslips"/>
                     </button>
                 </xpath>

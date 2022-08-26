@@ -2,10 +2,10 @@
 <odoo>
     <!-- Root Menus -->
 
-    <menuitem id="menu_hr_payroll_community_root" name="Payroll" sequence="45"
-              web_icon="hr_payroll_community,static/description/icon.png"/>
-    <menuitem id="menu_hr_payroll_community_configuration" name="Configuration" parent="menu_hr_payroll_community_root"
-              sequence="100" groups="hr_payroll_community.group_hr_payroll_community_manager"/>
+    <menuitem id="menu_payroll_root" name="Payroll" sequence="45"
+              web_icon="payroll,static/description/icon.png"/>
+    <menuitem id="menu_payroll_configuration" name="Configuration" parent="menu_payroll_root"
+              sequence="100" groups="payroll.group_payroll_manager"/>
 
     <!-- Contract View -->
     <record id="hr_contract_form_inherit" model="ir.ui.view">
@@ -123,6 +123,6 @@
     <menuitem
             id="hr_contract_advantage_template_menu_action"
             action="hr_contract_advantage_template_action"
-            parent="menu_hr_payroll_community_configuration"
+            parent="menu_payroll_configuration"
             sequence="50"/>
 </odoo>

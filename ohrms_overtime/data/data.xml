@@ -5,7 +5,7 @@
             <field name="name">Overtime</field>
             <field name="code">OT100</field>
             <field name="sequence" eval="100"/>
-            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="category_id" ref="payroll.ALW"/>
             <field name="condition_select">python</field>
             <field name="condition_python">result = inputs.OT100</field>
             <field name="amount_select">code</field>

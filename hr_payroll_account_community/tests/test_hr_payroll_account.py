@@ -22,7 +22,7 @@ class TestHrPayrollAccount(common.TransactionCase):
 
         self._load('account', 'test', 'account_minimal_test.xml')
 
-        self.payslip_action_id = self.ref('hr_payroll_community.menu_department_tree')
+        self.payslip_action_id = self.ref('payroll.menu_department_tree')
 
         self.res_partner_bank = self.env['res.partner.bank'].create({
             'acc_number': '001-9876543-21',
@@ -48,14 +48,14 @@ class TestHrPayrollAccount(common.TransactionCase):
             'name': 'Salary Structure for Software Developer',
             'code': 'SD',
             'company_id': self.ref('base.main_company'),
-            'parent_id': self.ref('hr_payroll_community.structure_base'),
+            'parent_id': self.ref('payroll.structure_base'),
             'rule_ids': [(6, 0, [
-                    self.ref('hr_payroll_community.hr_salary_rule_houserentallowance1'),
-                    self.ref('hr_payroll_community.hr_salary_rule_convanceallowance1'),
-                    self.ref('hr_payroll_community.hr_salary_rule_professionaltax1'),
-                    self.ref('hr_payroll_community.hr_salary_rule_providentfund1'),
-                    self.ref('hr_payroll_community.hr_salary_rule_meal_voucher'),
-                    self.ref('hr_payroll_community.hr_salary_rule_sales_commission')
+                    self.ref('payroll.hr_salary_rule_houserentallowance1'),
+                    self.ref('payroll.hr_salary_rule_convanceallowance1'),
+                    self.ref('payroll.hr_salary_rule_professionaltax1'),
+                    self.ref('payroll.hr_salary_rule_providentfund1'),
+                    self.ref('payroll.hr_salary_rule_meal_voucher'),
+                    self.ref('payroll.hr_salary_rule_sales_commission')
             ])],
         })
 

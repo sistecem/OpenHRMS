@@ -33,7 +33,7 @@
     'company': 'Cybrosys Techno Solutions',
     'website': 'https://www.openhrms.com',
     'depends': [
-                'base', 'hr', 'hr_payroll_community', 'hr_employee_updation',
+                'base', 'hr', 'payroll', 'hr_employee_updation',
                 ],
     'data': [
         'security/ir.model.access.csv',

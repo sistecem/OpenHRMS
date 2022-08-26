@@ -89,7 +89,7 @@
 
         <menuitem action="action_view_hr_gratuity_accounting_configuration"
                   id="menu_action_hr_gratuity_account_config"
-                  parent="hr_payroll_community.menu_hr_payroll_community_configuration"
+                  parent="payroll.menu_payroll_configuration"
                   sequence="30"
                   groups="hr.group_hr_user"/>
 

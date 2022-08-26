@@ -96,7 +96,7 @@
     <menuitem
         id="menu_hr_payroll_structure_view"
         action="action_view_hr_payroll_structure_list_form"
-        parent="menu_hr_payroll_community_configuration"
+        parent="menu_payroll_configuration"
         sequence="2"
     />
 
@@ -147,7 +147,7 @@
     <menuitem
         id="menu_hr_salary_rule_category"
         action="action_hr_salary_rule_category"
-        parent="menu_hr_payroll_community_configuration"
+        parent="menu_payroll_configuration"
         sequence="11"
         groups="base.group_no_one"
     />
@@ -228,7 +228,7 @@
     <menuitem
         id="menu_action_hr_contribution_register_form"
         action="action_contribution_register_form"
-        parent="menu_hr_payroll_community_configuration"
+        parent="menu_payroll_configuration"
         sequence="14"
     />
 
@@ -368,7 +368,7 @@
         </record>
         <menuitem id="menu_action_hr_salary_rule_form"
                   action="action_salary_rule_form"
-                  parent="menu_hr_payroll_community_configuration"
+                  parent="menu_payroll_configuration"
                   sequence="12"/>
 
 

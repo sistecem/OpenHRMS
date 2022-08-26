@@ -40,7 +40,7 @@
                 'hr_recruitment',
                 'hr_attendance',
                 'hr_holidays',
-                'hr_payroll_community',
+                'payroll',
                 'hr_expense',
                 'hr_leave_request_aliasing',
                 'hr_timesheet',

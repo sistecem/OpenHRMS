@@ -3,7 +3,7 @@
 import os
 
 from odoo.tools import config, test_reports
-from odoo.addons.hr_payroll_community.tests.common import TestPayslipBase
+from odoo.addons.payroll.tests.common import TestPayslipBase
 
 
 class TestPayslipFlow(TestPayslipBase):
@@ -26,8 +26,8 @@ class TestPayslipFlow(TestPayslipBase):
         context = {
             "lang": "en_US", "tz": False, "active_model": "ir.ui.menu",
             "department_id": False, "section_id": False,
-            "active_ids": [self.ref("hr_payroll_community.menu_department_tree")],
-            "active_id": self.ref("hr_payroll_community.menu_department_tree")
+            "active_ids": [self.ref("payroll.menu_department_tree")],
+            "active_id": self.ref("payroll.menu_department_tree")
         }
         # I click on 'Compute Sheet' button on payslip
         richard_payslip.with_context(context).compute_sheet()
@@ -68,11 +68,11 @@ class TestPayslipFlow(TestPayslipBase):
         })
 
         # I print the payslip report
-        data, data_format = self.env.ref('hr_payroll_community.action_report_payslip').render(richard_payslip.ids)
+        data, data_format = self.env.ref('payroll.action_report_payslip').render(richard_payslip.ids)
 
         # I print the payslip details report
-        data, data_format = self.env.ref('hr_payroll_community.payslip_details_report').render(richard_payslip.ids)
+        data, data_format = self.env.ref('payroll.payslip_details_report').render(richard_payslip.ids)
 
         # I print the contribution register report
-        context = {'model': 'hr.contribution.register', 'active_ids': [self.ref('hr_payroll_community.hr_houserent_register')]}
-        test_reports.try_report_action(self.env.cr, self.env.uid, 'action_payslip_lines_contribution_register', context=context, our_module='hr_payroll_community')
+        context = {'model': 'hr.contribution.register', 'active_ids': [self.ref('payroll.hr_houserent_register')]}
+        test_reports.try_report_action(self.env.cr, self.env.uid, 'action_payslip_lines_contribution_register', context=context, our_module='payroll')

@@ -147,7 +147,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="main_menu_hr_resignation" name="End of Service" sequence="71" parent="hr_payroll_community.menu_hr_payroll_community_root"
+        <menuitem id="main_menu_hr_resignation" name="End of Service" sequence="71" parent="payroll.menu_payroll_root"
                   groups="hr.group_hr_user"/>
         <menuitem id="menu_hr_gratuity" name="Gratuity Settlement" parent="main_menu_hr_resignation"
                   action="action_employee_gratuity" sequence="1" groups="hr.group_hr_user"/>

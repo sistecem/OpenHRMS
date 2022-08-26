@@ -8,7 +8,7 @@
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.openhrms.com",
-    'depends': ['base', 'hr', 'hr_payroll_community'],
+    'depends': ['base', 'hr', 'payroll'],
     'data': [
              'views/gosi_view.xml',
              'views/sequence.xml',

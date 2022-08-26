@@ -13,7 +13,7 @@
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': 'https://www.cybrosys.com',
-    'depends': ['hr_payroll_community', 'account'],
+    'depends': ['payroll', 'account'],
     'images': ['static/description/banner.png'],
     'data': ['views/hr_payroll_account_views.xml',
              'views/account_journal_views.xml'],

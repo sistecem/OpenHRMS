@@ -8,7 +8,7 @@
     'maintainer': 'Cybrosys Techno Solutions',
     'category': 'Generic Modules/Human Resources',
     'website': "https://www.openhrms.com",
-    'depends': ['base', 'hr', 'hr_payroll_community', 'account',],
+    'depends': ['base', 'hr', 'payroll', 'account',],
     'data': [
         'data/sequence.xml',
         'views/hr_gratuity_view.xml',

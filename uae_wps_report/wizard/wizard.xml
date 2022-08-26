@@ -33,7 +33,7 @@
         <menuitem
                 id="wps_wizard_menu"
                 name="SIF"
-                parent="hr_payroll_community.menu_hr_payroll_community_root"/>
+                parent="payroll.menu_payroll_root"/>
         <menuitem
                 id="wps_wizard_submenu"
                 name="Create SIF"

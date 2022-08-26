@@ -289,8 +289,8 @@
 
     <menuitem action="action_view_hr_payslip_form"
               id="menu_department_tree"
-              parent="menu_hr_payroll_community_root"
-              groups="hr_payroll_community.group_hr_payroll_community_user"/>
+              parent="menu_payroll_root"
+              groups="payroll.group_payroll_user"/>
 
     <record id="act_hr_employee_payslip_list" model="ir.actions.act_window">
         <field name="res_model">hr.payslip</field>
@@ -398,7 +398,7 @@
         <field name="view_mode">tree,kanban,form</field>
         <field name="search_view_id" ref="hr_payslip_run_filter"/>
     </record>
-    <menuitem action="action_hr_payslip_run_tree" id="menu_hr_payslip_run" parent="menu_hr_payroll_community_root"/>
+    <menuitem action="action_hr_payslip_run_tree" id="menu_hr_payslip_run" parent="menu_payroll_root"/>
 
     <!--  Shortcuts -->
 

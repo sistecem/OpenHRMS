@@ -16,8 +16,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//div[hasclass('settings')]" position="inside">
                     <div class="app_settings_block" data-string="Payroll" string="Payroll"
-                         data-key="hr_payroll_community"
-                         groups="hr_payroll_community.group_hr_payroll_community_manager">
+                         data-key="payroll"
+                         groups="payroll.group_payroll_manager">
                     <field name="module_l10n_fr_hr_payroll" invisible="1"/>
                     <field name="module_l10n_be_hr_payroll" invisible="1"/>
                     <field name="module_l10n_in_hr_payroll" invisible="1"/>
@@ -54,18 +54,18 @@
             </field>
         </record>
 
-        <record id="action_hr_payroll_community_configuration" model="ir.actions.act_window">
+        <record id="action_payroll_configuration" model="ir.actions.act_window">
             <field name="name">Settings</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.config.settings</field>
             <field name="view_mode">form</field>
             <field name="target">inline</field>
-            <field name="context">{'module' : 'hr_payroll_community'}</field>
+            <field name="context">{'module' : 'payroll'}</field>
         </record>
 
         <menuitem id="menu_hr_payroll_global_settings" name="Settings"
-                  parent="menu_hr_payroll_community_configuration"
+                  parent="menu_payroll_configuration"
                   sequence="10"
-                  action="action_hr_payroll_community_configuration"
+                  action="action_payroll_configuration"
                   groups="base.group_system"/>
 </odoo>
