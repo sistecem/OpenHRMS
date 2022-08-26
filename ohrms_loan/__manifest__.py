@@ -20,7 +20,7 @@
 #
 ###################################################################################
 {
-    'name': 'Open HRMS Loan Management',
+    'name': 'Open HRMS Loan Management Modified',
     'version': '14.0.1.0.0',
     'summary': 'Manage Loan Requests',
     'description': """
