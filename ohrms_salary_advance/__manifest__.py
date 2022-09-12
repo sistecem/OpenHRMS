@@ -20,7 +20,7 @@
 #
 ###################################################################################
 {
-    'name': 'Open HRMS Advance Salary',
+    'name': 'Open HRMS Advance Salary withChanges',
     'version': '14.0.1.0.0',
     'summary': 'Advance Salary In HR',
     'description': """
