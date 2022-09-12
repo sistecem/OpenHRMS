@@ -20,7 +20,9 @@ class SalaryRuleInput(models.Model):
             if current_date == existing_date:
                 state = adv_obj.state
                 amount = adv_obj.advance
+                quantity = 0
                 for result in res:
-                    if state == 'approve' and amount != 0 and result.get('code') == 'SAR':
+                    if state == 'approve' and amount != 0 and result.get('code') == 'ANT':
                         result['amount'] = amount
+                        result['amount_qty'] = quantity + 1
         return res
