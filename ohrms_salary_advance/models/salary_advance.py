@@ -36,11 +36,22 @@ class SalaryAdvancePayment(models.Model):
 
     @api.onchange('employee_id')
     def onchange_employee_id(self):
+        date_from = '2022-10-01'
+        contract_id=self.employee_id._get_contracts(self.date, self.date, states=['open'])
+        print(contract_id)
         department_id = self.employee_id.department_id.id
         domain = [('employee_id', '=', self.employee_id.id)]
-        return {'value': {'department': department_id}, 'domain': {
+        return {'value': {'department': department_id, 'employee_contract_id': contract_id}, 'domain': {
             'employee_contract_id': domain,
         }}
+
+    # def _get_employee_contracts(self):
+    #     self.date
+    #     return self.env["hr.contract"].browse(
+    #         self.employee_id._get_contracts(
+    #             date_from=self.date_from, date_to=self.date_to
+    #         ).ids
+    #     )
 
     @api.onchange('company_id')
     def onchange_company_id(self):
@@ -74,30 +85,32 @@ class SalaryAdvancePayment(models.Model):
                    """
         emp_obj = self.env['hr.employee']
         address = emp_obj.browse([self.employee_id.id]).address_home_id
-        if not address.id:
-            raise UserError( 'Define home address for the employee. i.e address under private information of the employee.')
+        # if not address.id:
+        #     raise UserError( 'Define home address for the employee. i.e address under private information of the employee.')
         salary_advance_search = self.search([('employee_id', '=', self.employee_id.id), ('id', '!=', self.id),
                                              ('state', '=', 'approve')])
         current_month = datetime.strptime(str(self.date), '%Y-%m-%d').date().month
+        current_year = datetime.strptime(str(self.date), '%Y-%m-%d').date().year
         for each_advance in salary_advance_search:
             existing_month = datetime.strptime(str(each_advance.date), '%Y-%m-%d').date().month
-            if current_month == existing_month:
-                raise UserError('Advance can be requested once in a month')
+            existing_year = datetime.strptime(str(each_advance.date), '%Y-%m-%d').date().year
+            if current_month == existing_month and current_year == existing_year:
+                raise UserError('Solo se puede solicitar un Anticipo al mes')
         if not self.employee_contract_id:
-            raise UserError('Define a contract for the employee')
+            raise UserError('Define un contrato para el empleado')
         struct_id = self.employee_contract_id.struct_id
         adv = self.advance
         amt = self.employee_contract_id.wage
         if adv > amt and not self.exceed_condition:
-            raise UserError('Advance amount is greater than allotted')
+            raise UserError('El monto del anticipo es mayor al sueldo')
 
         if not self.advance:
-            raise UserError('You must Enter the Salary Advance amount')
+            raise UserError('Ingresa el monto del anticipo')
         payslip_obj = self.env['hr.payslip'].search([('employee_id', '=', self.employee_id.id),
                                                      ('state', '=', 'done'), ('date_from', '<=', self.date),
                                                      ('date_to', '>=', self.date)])
         if payslip_obj:
-            raise UserError("This month salary already calculated")
+            raise UserError("El salario de este mes ya fue calculado")
 
         for slip in self.env['hr.payslip'].search([('employee_id', '=', self.employee_id.id)]):
             slip_moth = datetime.strptime(str(slip.date_from), '%Y-%m-%d').date().month
@@ -106,7 +119,8 @@ class SalaryAdvancePayment(models.Model):
                 current_day = datetime.strptime(str(self.date), '%Y-%m-%d').date().day
                 if current_day - slip_day < struct_id.advance_date:
                     raise exceptions.Warning(
-                        _('Request can be done after "%s" Days From prevoius month salary') % struct_id.advance_date)
+                        _('Las solicitudes pueden ser realizadas "%s" días despues del salario del mes previo'
+                          ) % struct_id.advance_date)
         self.state = 'waiting_approval'
 
     def approve_request_acc_dept(self):
@@ -115,14 +129,16 @@ class SalaryAdvancePayment(models.Model):
         salary_advance_search = self.search([('employee_id', '=', self.employee_id.id), ('id', '!=', self.id),
                                              ('state', '=', 'approve')])
         current_month = datetime.strptime(str(self.date), '%Y-%m-%d').date().month
+        current_year = datetime.strptime(str(self.date), '%Y-%m-%d').date().year
         for each_advance in salary_advance_search:
             existing_month = datetime.strptime(str(each_advance.date), '%Y-%m-%d').date().month
-            if current_month == existing_month:
-                raise UserError('Advance can be requested once in a month')
+            existing_year = datetime.strptime(str(each_advance.date), '%Y-%m-%d').date().year
+            if current_month == existing_month and current_year == existing_year:
+                raise UserError('Solo se puede solicitar un Anticipo al mes')
         if not self.debit or not self.credit or not self.journal:
             raise UserError("You must enter Debit & Credit account and journal to approve ")
         if not self.advance:
-            raise UserError('You must Enter the Salary Advance amount')
+            raise UserError('Ingresa el monto del anticipo')
 
         move_obj = self.env['account.move']
         timenow = time.strftime('%Y-%m-%d')

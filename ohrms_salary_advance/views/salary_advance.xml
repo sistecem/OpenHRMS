@@ -36,7 +36,7 @@
                                 <field name="credit"  attrs="{'invisible':[('state', '=', 'draft'), ('state', '=', 'submit')], 'readonly':[('state','in',['approve','cancel','reject'])]}" groups="account.group_account_manager"/>
                                 <field name="debit" attrs="{'invisible':[('state', '=', 'draft'), ('state', '=', 'submit')], 'readonly':[('state','in',['approve','cancel','reject'])]}" groups="account.group_account_manager"/>
                                 <field name="journal" attrs="{'invisible': [('state', '=', 'draft'), ('state', '=', 'submit')], 'readonly':[('state','in',['approve','cancel','reject'])]}" groups="account.group_account_manager"/>
-                                <field name="employee_contract_id"  attrs="{'invisible': ['|', ('state', '=', 'draft'), ('state', '=', 'approve')], 'readonly':[('state','in',['approve','cancel','reject'])]}" groups="hr.group_hr_manager,hr.group_hr_user"/>
+                                <field name="employee_contract_id"   groups="hr.group_hr_manager,hr.group_hr_user"/>
 	                    	</group>
                     	</group>
 		            </sheet>
